@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto - Land Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            background-color: #5429d3dd;
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+
+        iframe {
+            width: 90%;
+            height: 600px;
+            margin: 0 auto;
+            display: block;
+            margin-top: 30px;
+            background-color: #fff;
+            max-width: 1200px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        p {
+            padding: 10px 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="portfolio">
+
+
+        <h1 id="title">Página Pessoal de Portifolio</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae vero odit distinctio ipsum quidem
+            aliquid placeat incidunt nemo hic voluptatem, exercitationem animi, iure architecto molestiae labore rerum
+            velit expedita? Nesciunt?</p>
+
+
+        <iframe id="iframe" src="index.html"></iframe>
+
+
+    </section>
+    <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get("name");
+
+        let title = name.replace('-', ' ').replace('_', ' ');
+
+        let up = function(str){
+           return str[0].toUpperCase() + str.substr(1)
+        }
+
+        let arr = title.split(' ');        
+        document.title = document.getElementById('title').innerHTML = 'Projeto ' + up(arr[0]) + ' ' + (arr.length > 1 ? up(arr[1]) : '') + ' ' + (arr.length > 2 ? up(arr[2]) : '');
+
+        document.getElementById('iframe').src = (name != 'rede_social') ? 'https://leandros8.github.io/' + name : 'https://rede.leandrodev.com.br';
+         
+
+    </script>
+</body>
+
+</html>
