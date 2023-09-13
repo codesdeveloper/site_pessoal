@@ -7,70 +7,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto - Land Page</title>
     <style>
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css");
+
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        section {
-            background-color: #5429d3dd;
-            min-height: 100vh;
-            padding: 30px 0;
-        }
-
-        iframe {
-            width: 90%;
-            height: 600px;
-            margin: 0 auto;
-            display: block;
-            margin-top: 30px;
+        section.projeto {
             background-color: #fff;
-            max-width: 1200px;
+            height: 100vh;
+            padding: 20px 0 40px 0;
+            overflow: hidden;
         }
 
         h1 {
             text-align: center;
-            color: #fff;
+            color: #000;
             margin-bottom: 15px;
         }
 
-        p {
-            padding: 10px 100px;
+        .projeto .box {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 70px;
+            justify-content: space-evenly;
         }
+
+        .projeto .left {
+            width: 40%;
+        }
+
+        .left p {
+            padding: 10px 20px;
+        }
+
+        .left ul {
+            display: flex;
+            list-style: none;
+            margin: 10px auto;
+            width: fit-content;
+        }
+
+        .left li {
+            padding: 3px 7px;
+            margin: 0 7px;
+            text-transform: uppercase;
+            font-size: 12px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .projeto .right {
+            width: 40%;
+            overflow: hidden;
+        }
+
+        .right .wrapper{
+            width: 100%;
+            height: 100%;
+            position: static;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+
+        }
+
+        .right iframe {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+            background-color: #fff;
+            transform-origin: 0 0;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+       
     </style>
 </head>
 
 <body>
 
-    <section class="portfolio">
-
+    <section class="projeto">
 
         <h1 id="title">Página Pessoal de Portifolio</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae vero odit distinctio ipsum quidem
-            aliquid placeat incidunt nemo hic voluptatem, exercitationem animi, iure architecto molestiae labore rerum
-            velit expedita? Nesciunt?</p>
+        <div class="box">
+          
 
-
-        <iframe id="iframe" src="index.html"></iframe>
-
-
+            <div class="right">
+                <div class="menu">
+                    <span title="Voltar" class="back"><i class="fa-solid fa-arrow-left"></i></span>
+                    <span title="TV" class="tv"><i class="fa-solid fa-tv"></i></span>
+                    <span title="Computador" class="desktop"><i class="fa-solid fa-desktop"></i></span>
+                    <span title="Tablet" class="tablet"><i class="fa-solid fa-tablet"></i></span>
+                    <span title="Celular" class="phone"><i class="fa-solid fa-mobile"></i></span>
+                    <span title="Github" class="github"><i class="fa-brands fa-github-alt"></i></span>
+                    <span title="Tela cheia" class="full"><i class="fa-solid fa-expand"></i></span>
+                </div>
+                <div class="wrapper">
+                    <iframe id="iframe" src="index.html"></iframe>
+                </div>
+            </div>
+        </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script>
-        
+
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get("name");
+        const full = function () {
+            $('body').css('overflow', 'hidden');
+           $('.wrapper').css({
+            'position' : 'absolute'
+            });
+        }
 
         let title = name.replace('-', ' ').replace('_', ' ');
 
-        let up = function(str){
-           return str[0].toUpperCase() + str.substr(1)
+        let up = function (str) {
+            return str[0].toUpperCase() + str.substr(1)
         }
 
-        let arr = title.split(' ');        
-        document.title = document.getElementById('title').innerHTML = 'Projeto ' + up(arr[0]) + ' ' + (arr.length > 1 ? up(arr[1]) : '') + ' ' + (arr.length > 2 ? up(arr[2]) : '');
+        let arr = title.split(' ');
+        document.title = $('#title').innerHTML = 'Projeto ' + up(arr[0]) + ' ' + (arr.length > 1 ? up(arr[1]) : '') + ' ' + (arr.length > 2 ? up(arr[2]) : '');
 
-        document.getElementById('iframe').src = (name != 'rede_social') ? 'https://leandros8.github.io/' + name : 'https://rede.leandrodev.com.br';
-         
+        $('iframe').attr('src', ((name != 'rede_social') ? 'https://leandros8.github.io/' + name : 'https://rede.leandrodev.com.br'));
+
+        $('.back').click(() => { window.location.href = '/#portfolio'; })
+
+        $('.tv').click(() => {
+            full();
+            $('iframe').css({
+                'width': '2560px',
+                'height': '1186px',
+                'transform': 'scale(0.55) translate(-50%, 0)',
+                'margin-left': '50%'
+            });
+        })
+        $('.desktop').click(() => {
+            full();
+            $('iframe').css({
+                'width': '1440px',
+                'height': '652px',
+                'transform': 'scale(1)',
+                'margin': '0 auto'
+            });
+        })
+        $('.tablet').click(() => {
+            full();
+            $('iframe').css({
+                'width': '768px',
+                'height': '652px',
+                'transform': 'scale(1)',
+                'margin': '0 auto'
+            });
+        })
+        $('.phone').click(() => {
+            full();
+            $('iframe').css({
+                'width': '375px',
+                'height': '652px',
+                'transform': 'scale(1)',
+                'margin': '0 auto'
+
+            });
+        })
+
+        $('.github').click(() => { window.location.href = 'https://github.com/leandros8/' + name; })
+        $('.full').click(() => {
+            full();
+            $('iframe').css({
+                'width': '100%',
+                'height': '100%',
+                'transform': 'scale(1)',
+                'margin': '0'
+
+            });
+        });
 
     </script>
 </body>
