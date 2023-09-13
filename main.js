@@ -23,8 +23,10 @@ const projetos = [
     { name: 'restaurante_coronel', tech: ['html', 'css', 'javascript', 'firebase'], description: '-', date: '-' },
     { name: 'notification_push', tech: ['html', 'css', 'javascript'], description: '-', date: '-' },
 ];
-var html = '';
 
+const posts = [];
+
+var html = '';
 projetos.forEach(n => {
     html += `<li><a href='#' id="${n.name}">
     <img src='imgs/projetos/${n.name}.png'>
@@ -32,7 +34,6 @@ projetos.forEach(n => {
     n.tech.forEach(e => html += `<li>${e}</li>`);
     html += `</ul></div></a></li>`;
 })
-
 $('.portfolio_box').html(html);
 
 let up = function (str) {
@@ -40,7 +41,6 @@ let up = function (str) {
     let arr = str2.split(' ');
     return arr[0][0].toUpperCase() + arr[0].substr(1) + ' ' + (arr.length > 1 ? arr[1][0].toUpperCase() + arr[1].substr(1) : '') + ' ' + (arr.length > 2 ? arr[2][0].toUpperCase() + arr[2].substr(1) : '');
 }
-
 
 window.onload = () => {
     $('.animation').hide();
@@ -143,16 +143,16 @@ window.onload = () => {
         let portfolio = $('section#portfolio')[0];
         let servicos = $('section#servicos')[0];
         let contato = $('section#contato')[0];
+        let postagens = $('section#postagens')[0];
 
         if (scrollY < sobre.offsetTop) $('.l-home').css('color', '#f0f');
         else if (scrollY < conhecimentos.offsetTop) $('.l-sobre').css('color', '#f0f');
         else if (scrollY < certificados.offsetTop) $('.l-conhecimentos').css('color', '#f0f');
         else if (scrollY < portfolio.offsetTop) $('.l-certificados').css('color', '#f0f');
         else if (scrollY < servicos.offsetTop) $('.l-portfolio').css('color', '#f0f');
-
         else if (scrollY < contato.offsetTop) $('.l-servicos').css('color', '#f0f');
-        else $('.l-contato').css('color', '#f0f');
-
+        else if (scrollY < postagens.offsetTop) $('.l-contato').css('color', '#f0f');
+        else $('.l-postagens').css('color', '#f0f');
     })
 
     $('.portfolio_details .close').click(() => {

@@ -776,7 +776,7 @@ section.contato p{
     width: 100%;
     text-align: left;
     text-shadow: 6px 5px 8px rgba(0, 0, 0, 0.9);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 section.contato .info {
@@ -870,6 +870,67 @@ section.contato .info img{
 
 .contact-box button:hover {
     color: #ccc;
+}
+
+section.postagens{
+    background: var(--third-color);
+    padding: 30px 80px;
+}
+
+section.postagens ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+section.postagens ul li {
+    margin: 10px;
+    width: 300px;
+    color: #fff;
+    background: #000;
+    padding-bottom: 10px;
+}
+
+section.postagens ul li img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+section.postagens ul li h3{
+    text-align: center;
+    font-family: 'nunito';
+    font-weight: bold;
+}
+
+section.postagens ul li p{
+    padding: 5px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-style: italic;
+    font-size: 10px;
+}
+
+section.postagens ul li span{
+    color: var(--second-color);
+    font-family: monospace;
+    font-size: 10px; 
+    padding: 0 10px;
+}
+
+section.postagens ul li a{
+    color: #00f;
+    font-size: 15px; 
+}
+
+section.postagens >  a{
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    float: right;
+    margin-right: 10px;
 }
 
 footer {
